@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi" xmlns:netfx="http://schemas.microsoft.com/wix/NetFxExtension">
+    <?define PROJECTPATH_PUTTYMADNESS = "../PuttyMadness"?>
+    <?define PROJECTPATH_PUTTYMADNESSHOTKEY = "../PuttyMadnessHotkeyListener"?>
+    <?define VERSION="!(bind.FileVersion.PuttyMadness.exe)"?>
+    <Product Id="*" Name="Putty Madness" Language="1033" Version="$(var.VERSION)" Manufacturer="Graham Mainwaring" UpgradeCode="0A61120B-A747-41CF-A6AE-B592D1641CC9">
+        <Package Id="*" Description="Putty Madness" Manufacturer="Graham Mainwaring" InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
+        <WixVariable Id="WixUILicenseRtf" Value="license.rtf" />
+        <Media Id="1" Cabinet="media1.cab" EmbedCab="yes" />
+        <MajorUpgrade AllowSameVersionUpgrades="no" DowngradeErrorMessage="A later version of [ProductName] is already installed. Setup will now exit." />
+        <Feature Id="ProductFeature" Title="Putty Madness" Level="1">
+            <ComponentGroupRef Id="ProductComponents" />
+            <ComponentRef Id="StartMenuShortcuts" />
+            <ComponentRef Id="MainExe" />
+            <ComponentRef Id="ListenerExe" />
+        </Feature>
+        <Property Id="WIXUI_INSTALLDIR" Value="INSTALLFOLDER" />
+        <Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOXTEXT" Value="Launch Putty Madness" />
+        <Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOX" Value="1" />
+        <Property Id="WixShellExecTarget" Value="[#PuttyMadnessHotkeyListener.exe]" />
+        <CustomAction Id="LaunchApplication" BinaryKey="WixCA" DllEntry="WixShellExec" Impersonate="yes" />
+        <UI>
+            <Publish Dialog="ExitDialog"
+                Control="Finish"
+                Event="DoAction"
+                Value="LaunchApplication">WIXUI_EXITDIALOGOPTIONALCHECKBOX = 1 and NOT Installed</Publish>
+            <UIRef Id="WixUI_InstallDir" />
+        </UI>
+        <PropertyRef Id="NETFRAMEWORK40CLIENT"/>
+        <PropertyRef Id="NETFRAMEWORK40FULL"/>
+        <Condition Message="This application requires .NET Framework 4.0 to be installed.">
+            <![CDATA[Installed OR NETFRAMEWORK40CLIENT OR NETFRAMEWORK40FULL]]></Condition>
+        <Icon Id="StartMenuIcon.exe" SourceFile="$(var.PROJECTPATH_PUTTYMADNESS)\bin\Release\PuttyMadness.exe" />
+    </Product>
+    <Fragment>
+        <Directory Id="TARGETDIR" Name="SourceDir">
+            <Directory Id="ProgramFilesFolder">
+                <Directory Id="INSTALLFOLDER" Name="Putty Madness">
+                </Directory>
+            </Directory>
+            <Directory Id="ProgramMenuFolder">
+                <Directory Id="ProgramMenuDir" Name="Putty Madness">
+                    <Component Id="StartMenuShortcuts" Guid="43B28146-E0F5-4CEE-85A7-6C8720593D99">
+                        <RemoveFolder Id="ProgramMenuDir" On="uninstall" />
+                        <RegistryValue Root="HKCU" Key="Software\[ProductName]" Type="string" Value="" />
+                    </Component>
+                </Directory>
+            </Directory>
+        </Directory>
+        <ComponentGroup Id="ProductComponents" Directory="INSTALLFOLDER">
+            <!-- Binaries -->
+            <Component Id="MainExe" Guid="C902D074-C46C-4BAA-9CB2-702F7BDD90F9">
+                <File Id="PuttyMadness.exe" Source="$(var.PROJECTPATH_PUTTYMADNESS)\bin\Release\PuttyMadness.exe">
+                    <Shortcut Id="ExeShortcut" Directory="ProgramMenuDir" Name="Putty Madness" Advertise="yes" Icon="StartMenuIcon.exe" IconIndex="0" />
+                </File>
+                <File Id="Renci.SshNet.dll" Source="$(var.PROJECTPATH_PUTTYMADNESS)\bin\Release\Renci.SshNet.dll" />
+            </Component>
+            <Component Id="ListenerExe" Guid="F6D0DC9F-AD2D-4E16-A3FD-386815AA2D89">
+                <File Id="PuttyMadnessHotkeyListener.exe" Source="$(var.PROJECTPATH_PUTTYMADNESSHOTKEY)\bin\Release\PuttyMadnessHotkeyListener.exe">
+                    <Shortcut Id="ListenerExeShortcut" Directory="ProgramMenuDir" Name="Putty Madness Hotkey Listener" Advertise="yes" Icon="StartMenuIcon.exe" IconIndex="0" />
+                </File>
+            </Component>
+        </ComponentGroup>
+    </Fragment>
+</Wix>

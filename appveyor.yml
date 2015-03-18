@@ -1,0 +1,9 @@
+version: 0.90.{build}
+configuration: Release
+build:
+  verbosity: minimal
+after_build:
+- 7z a %APPVEYOR_BUILD_FOLDER%\PuttyMadness.zip %APPVEYOR_BUILD_FOLDER%\Renci.SshNet\bin\Debug\Renci.SshNet.dll %APPVEYOR_BUILD_FOLDER%\PuttyMadness\bin\Release\PuttyMadness.exe %APPVEYOR_BUILD_FOLDER%\PuttyMadnessHotkeyListener\bin\Release\PuttyMadnessHotkeyListener.exe
+artifacts:
+- path: PuttyMadness.zip
+  name: PuttyMadness.zip

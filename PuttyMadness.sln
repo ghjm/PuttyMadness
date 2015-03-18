@@ -1,0 +1,51 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PuttyMadness", "PuttyMadness\PuttyMadness.csproj", "{389E9973-4E35-4C96-B7B0-EDE74D7E6732}"
+	ProjectSection(ProjectDependencies) = postProject
+		{2F5F8C90-0BD1-424F-997C-7BC6280919D1} = {2F5F8C90-0BD1-424F-997C-7BC6280919D1}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Renci.SshNet", "Renci.SshNet\Renci.SshNet.csproj", "{2F5F8C90-0BD1-424F-997C-7BC6280919D1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PuttyMadnessHotkeyListener", "PuttyMadnessHotkeyListener\PuttyMadnessHotkeyListener.csproj", "{37DA4817-5FCE-45F5-9D28-C6D6BC7C5982}"
+	ProjectSection(ProjectDependencies) = postProject
+		{2F5F8C90-0BD1-424F-997C-7BC6280919D1} = {2F5F8C90-0BD1-424F-997C-7BC6280919D1}
+	EndProjectSection
+EndProject
+Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "Setup", "Setup\Setup.wixproj", "{4A4FA3AB-FBC0-476D-975B-0609C8943E2C}"
+	ProjectSection(ProjectDependencies) = postProject
+		{37DA4817-5FCE-45F5-9D28-C6D6BC7C5982} = {37DA4817-5FCE-45F5-9D28-C6D6BC7C5982}
+		{389E9973-4E35-4C96-B7B0-EDE74D7E6732} = {389E9973-4E35-4C96-B7B0-EDE74D7E6732}
+		{2F5F8C90-0BD1-424F-997C-7BC6280919D1} = {2F5F8C90-0BD1-424F-997C-7BC6280919D1}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{389E9973-4E35-4C96-B7B0-EDE74D7E6732}.Debug|x86.ActiveCfg = Debug|x86
+		{389E9973-4E35-4C96-B7B0-EDE74D7E6732}.Debug|x86.Build.0 = Debug|x86
+		{389E9973-4E35-4C96-B7B0-EDE74D7E6732}.Release|x86.ActiveCfg = Release|x86
+		{389E9973-4E35-4C96-B7B0-EDE74D7E6732}.Release|x86.Build.0 = Release|x86
+		{2F5F8C90-0BD1-424F-997C-7BC6280919D1}.Debug|x86.ActiveCfg = Debug|x86
+		{2F5F8C90-0BD1-424F-997C-7BC6280919D1}.Debug|x86.Build.0 = Debug|x86
+		{2F5F8C90-0BD1-424F-997C-7BC6280919D1}.Release|x86.ActiveCfg = Release|x86
+		{2F5F8C90-0BD1-424F-997C-7BC6280919D1}.Release|x86.Build.0 = Release|x86
+		{37DA4817-5FCE-45F5-9D28-C6D6BC7C5982}.Debug|x86.ActiveCfg = Debug|x86
+		{37DA4817-5FCE-45F5-9D28-C6D6BC7C5982}.Debug|x86.Build.0 = Debug|x86
+		{37DA4817-5FCE-45F5-9D28-C6D6BC7C5982}.Release|x86.ActiveCfg = Release|x86
+		{37DA4817-5FCE-45F5-9D28-C6D6BC7C5982}.Release|x86.Build.0 = Release|x86
+		{4A4FA3AB-FBC0-476D-975B-0609C8943E2C}.Debug|x86.ActiveCfg = Debug|x86
+		{4A4FA3AB-FBC0-476D-975B-0609C8943E2C}.Debug|x86.Build.0 = Debug|x86
+		{4A4FA3AB-FBC0-476D-975B-0609C8943E2C}.Release|x86.ActiveCfg = Release|x86
+		{4A4FA3AB-FBC0-476D-975B-0609C8943E2C}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
