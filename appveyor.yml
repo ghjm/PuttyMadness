@@ -1,0 +1,21 @@
+version: 0.90.{build}
+branches:
+  only:
+  - master
+configuration: Release
+platform: x86
+assembly_info:
+  patch: true
+  file: '**\AssemblyInfo.*'
+  assembly_version: '{version}'
+  assembly_file_version: '{version}'
+  assembly_informational_version: '{version}'
+build:
+  verbosity: normal
+after_build:
+- 7z a %APPVEYOR_BUILD_FOLDER%\PuttyMadness.zip %APPVEYOR_BUILD_FOLDER%\Renci.SshNet\bin\Release\Renci.SshNet.dll %APPVEYOR_BUILD_FOLDER%\PuttyMadness\bin\Release\PuttyMadness.exe %APPVEYOR_BUILD_FOLDER%\PuttyMadnessHotkeyListener\bin\Release\PuttyMadnessHotkeyListener.exe
+artifacts:
+- path: PuttyMadness.zip
+  name: PuttyMadness.zip
+- path: Setup\bin\Release\PuttyMadness.msi
+  name: PuttyMadness.msi
