@@ -6,11 +6,11 @@ It also includes a keyboard hook function that lets you send commands to many Pu
 
 ## Installation
 
-[![Build status](https://ci.appveyor.com/api/projects/status/k59e52u6n0ir4hve?svg=true)](https://ci.appveyor.com/project/ghjm/puttymadness) 
+[![Build status](https://ci.appveyor.com/api/projects/status/k59e52u6n0ir4hve?svg=true)](https://ci.appveyor.com/project/ghjm/puttymadness)
 
-Downloads:    
-* [Windows Installer](https://ci.appveyor.com/api/buildjobs/o1gj0qvww5hkpp4g/artifacts/Setup/bin/Release/PuttyMadness.msi)
-* [Zip File](https://ci.appveyor.com/api/buildjobs/o1gj0qvww5hkpp4g/artifacts/PuttyMadness.zip)
+Version 0.90.4 Downloads:    
+* [Windows Installer MSI](https://ci.appveyor.com/api/buildjobs/ntit3oae8y1lq2no/artifacts/Setup/bin/Release/PuttyMadness.msi)
+* [Zip File](https://ci.appveyor.com/api/buildjobs/ntit3oae8y1lq2no/artifacts/PuttyMadness.zip)
 
 Many thanks to AppVeyor for their awesome free build service.
 
