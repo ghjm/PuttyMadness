@@ -6,9 +6,11 @@ It also includes a keyboard hook function that lets you send commands to many Pu
 
 ## Installation
 
-The easiest way to install is to download the [Putty Madness Windows Installer](https://ci.appveyor.com/api/buildjobs/o1gj0qvww5hkpp4g/artifacts/Setup/bin/Release/PuttyMadness.msi) and run it.
+[![Build status](https://ci.appveyor.com/api/projects/status/k59e52u6n0ir4hve?svg=true)](https://ci.appveyor.com/project/ghjm/puttymadness) 
 
-For a more portable install, you can download the [Putty Madness Zip File](https://ci.appveyor.com/api/buildjobs/o1gj0qvww5hkpp4g/artifacts/PuttyMadness.zip).
+Downloads:    
+* [Windows Installer](https://ci.appveyor.com/api/buildjobs/o1gj0qvww5hkpp4g/artifacts/Setup/bin/Release/PuttyMadness.msi)
+* [Zip File](https://ci.appveyor.com/api/buildjobs/o1gj0qvww5hkpp4g/artifacts/PuttyMadness.zip)
 
 Many thanks to AppVeyor for their awesome free build service.
 
