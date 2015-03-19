@@ -251,7 +251,10 @@ namespace PuttyMadness
                 if (proc.ProcessName.Contains("pageant"))
                     return;
             }
-            var pag_proc = System.Diagnostics.Process.Start("pageant.exe");
+            string pageant_path = PuttySearch.GetFullPath("pageant.exe");
+            if (pageant_path == null)
+                return;
+            var pag_proc = System.Diagnostics.Process.Start(pageant_path);
             pag_proc.WaitForInputIdle();
         }
     }

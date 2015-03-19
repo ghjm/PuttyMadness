@@ -74,7 +74,10 @@ namespace PuttyMadness
                         else
                         {
                             PageantInterface.LaunchPageantIfNeeded();
-                            var pag_proc = System.Diagnostics.Process.Start("pageant.exe", key.PPKFile);
+                            string pageant_path = PuttySearch.GetFullPath("pageant.exe");
+                            if (pageant_path == null)
+                                return;
+                            var pag_proc = System.Diagnostics.Process.Start(pageant_path, key.PPKFile);
                             pag_proc.WaitForExit();
                         }
                     }
@@ -108,8 +111,13 @@ namespace PuttyMadness
             // Figure out the full command line for Putty
             string puttycmd = ((TempFN.Length > 0) ? @"-t -m """ + TempFN + @""" " : "") + connhost;
 
+            // Locate PuTTY itself
+            string putty_path = PuttySearch.GetFullPath("putty.exe");
+            if (putty_path == null)
+                return;
+
             // Connect to the host
-            var proc = System.Diagnostics.Process.Start("putty.exe", puttycmd);
+            var proc = System.Diagnostics.Process.Start(PuttySearch.GetFullPath("putty.exe"), puttycmd);
             proc.WaitForInputIdle();
 
             var putty_hWnd = proc.MainWindowHandle;
