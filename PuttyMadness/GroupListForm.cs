@@ -79,10 +79,16 @@ namespace PuttyMadness
             if ((listBox1.SelectedIndex >= 0) && (listBox1.SelectedIndex < listBox1.Items.Count) &&
                 (e.KeyCode == Keys.Delete))
             {
-                listBox1.Items.RemoveAt(listBox1.SelectedIndex);
-                SaveGroups();
-                GlobalData.Instance.ToRegistry();
+                deleteToolStripMenuItem_Click(sender, e);
             }
         }
+
+        private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            listBox1.Items.RemoveAt(listBox1.SelectedIndex);
+            SaveGroups();
+            GlobalData.Instance.ToRegistry();
+        }
+
     }
 }

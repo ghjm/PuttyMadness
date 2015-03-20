@@ -179,7 +179,7 @@ namespace PuttyMadness
             {
                 if (!DetailData.ContainsKey(key))
                 {
-                    rk.DeleteSubKey(key);
+                    rk.DeleteSubKeyTree(key);
                 }
             }
             // Add/update current entries
