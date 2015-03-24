@@ -24,6 +24,8 @@ artifacts:
   name: PuttyMadness.msi
 on_success:
   - ps: .\update-readme.ps1
+  - git config --global user.email "graham@mhn.org"
+  - git config --global user.name "Graham Mainwaring"
   - git config --global credential.helper store
   - ps: Add-Content "$env:USERPROFILE\.git-credentials" "https://$($env:access_token):x-oauth-basic@github.com`n"
   - git commit -m "[skip ci] Updated README to {version}" README.md
