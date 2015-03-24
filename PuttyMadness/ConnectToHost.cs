@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using System.Text.RegularExpressions;
+using System.Drawing;
 
 namespace PuttyMadness
 {
@@ -121,9 +122,18 @@ namespace PuttyMadness
             proc.WaitForInputIdle();
 
             var putty_hWnd = proc.MainWindowHandle;
-            if ((Width > 0) && (Height > 0))
+            if ((Width > 0) && (Height > 0) && !Win32.GetWindowText(putty_hWnd).Contains("Error"))
             {
-                Win32.SetWindowPos(putty_hWnd, (IntPtr)0, Left, Top, Width, Height, 0);
+                // Figure out if the requested window would be off the screen
+                bool position_ok = false;
+                foreach (var screen in Screen.AllScreens)
+                {
+                    if (screen.WorkingArea.Contains(new Rectangle(Left, Top, Width, Height)))
+                        position_ok = true;
+                }
+                
+                if (position_ok)
+                    Win32.SetWindowPos(putty_hWnd, (IntPtr)0, Left, Top, Width, Height, 0);
             }
 
             // Hide our window and bring the Putty window to the front
