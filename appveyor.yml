@@ -27,7 +27,8 @@ on_success:
   - git config --global user.email "graham@mhn.org"
   - git config --global user.name "Graham Mainwaring"
   - git config --global credential.helper store
+  - git config --global push.default simple
   - ps: Add-Content "$env:USERPROFILE\.git-credentials" "https://$($env:access_token):x-oauth-basic@github.com`n"
   - git commit -m "[skip ci] Updated README to {version}" README.md
   - git tag {version}
-  - git push
+  - git push https://github.com/ghjm/PuttyMadness.git
