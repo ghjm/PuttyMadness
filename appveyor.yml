@@ -34,3 +34,6 @@ on_success:
   - git tag %APPVEYOR_BUILD_VERSION%
   - git remote set-url origin https://github.com/ghjm/PuttyMadness.git
   - git push --tags
+  - git checkout master
+  - git merge %APPVEYOR_BUILD_VERSION%
+  - git push
