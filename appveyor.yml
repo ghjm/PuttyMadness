@@ -16,19 +16,20 @@ assembly_info:
 build:
   verbosity: normal
 after_build:
-- 7z a %APPVEYOR_BUILD_FOLDER%\PuttyMadness.zip %APPVEYOR_BUILD_FOLDER%\Renci.SshNet\bin\Release\Renci.SshNet.dll %APPVEYOR_BUILD_FOLDER%\PuttyMadness\bin\Release\PuttyMadness.exe %APPVEYOR_BUILD_FOLDER%\PuttyMadnessHotkeyListener\bin\Release\PuttyMadnessHotkeyListener.exe
+  - 7z a %APPVEYOR_BUILD_FOLDER%\PuttyMadness.zip %APPVEYOR_BUILD_FOLDER%\Renci.SshNet\bin\Release\Renci.SshNet.dll %APPVEYOR_BUILD_FOLDER%\PuttyMadness\bin\Release\PuttyMadness.exe %APPVEYOR_BUILD_FOLDER%\PuttyMadnessHotkeyListener\bin\Release\PuttyMadnessHotkeyListener.exe
 artifacts:
-- path: PuttyMadness.zip
-  name: PuttyMadness.zip
-- path: Setup\bin\Release\PuttyMadness.msi
-  name: PuttyMadness.msi
+  - path: PuttyMadness.zip
+    name: PuttyMadness.zip
+  - path: Setup\bin\Release\PuttyMadness.msi
+    name: PuttyMadness.msi
 on_success:
-  - ps: .\update-readme.ps1
   - git config --global user.email "graham@mhn.org"
   - git config --global user.name "Graham Mainwaring"
   - git config --global credential.helper store
   - git config --global push.default simple
   - ps: Add-Content "$env:USERPROFILE\.git-credentials" "https://$($env:access_token):x-oauth-basic@github.com`n"
+  - git checkout master
+  - ps: .\update-readme.ps1
   - git commit -m "[skip ci] Updated README to {version}" README.md
   - git tag {version}
   - git push https://github.com/ghjm/PuttyMadness.git
