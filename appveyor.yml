@@ -30,5 +30,6 @@ on_success:
   - ps: Add-Content "$env:USERPROFILE\.git-credentials" "https://$($env:access_token):x-oauth-basic@github.com`n"
   - git checkout master
   - ps: .\update-readme.ps1
-  - git commit -m "[skip ci] Automated README update" README.md
-  - git push https://github.com/ghjm/PuttyMadness.git
+  - git commit -m "[skip ci] Updated README to version %APPVEYOR_BUILD_VERSION%" README.md
+  - git tag %APPVEYOR_BUILD_VERSION%
+  - git push --tags https://github.com/ghjm/PuttyMadness.git
