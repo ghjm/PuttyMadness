@@ -1,4 +1,7 @@
 version: 0.90.{build}
+environment:
+  access_token:
+    secure: ahkbWh0TYE4ffBk/J6nfixGuO3Uc7iqQ14VN3LlC0ur5DiaNEGnDN+oNd4JNCcEd
 branches:
   only:
   - master
@@ -19,3 +22,10 @@ artifacts:
   name: PuttyMadness.zip
 - path: Setup\bin\Release\PuttyMadness.msi
   name: PuttyMadness.msi
+on_success:
+  - ps: .\update-readme.ps1
+  - git config --global credential.helper store
+  - ps: Add-Content "$env:USERPROFILE\.git-credentials" "https://$($env:access_token):x-oauth-basic@github.com`n"
+  - git commit -m "[skip ci] Updated README to {version}" README.md
+  - git tag -m {version}
+  - git push
