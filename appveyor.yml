@@ -33,4 +33,4 @@ on_success:
   - git commit -m "[skip ci] Updated README to version %APPVEYOR_BUILD_VERSION%" README.md
   - git tag %APPVEYOR_BUILD_VERSION%
   - git remote set-url origin https://github.com/ghjm/PuttyMadness.git
-  - git push master --tags
+  - git push --tags
