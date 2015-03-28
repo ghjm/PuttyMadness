@@ -64,7 +64,6 @@ namespace PuttyMadness
 
         private void GroupListForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Application.Exit();
         }
 
         private void listBox1_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -72,6 +71,7 @@ namespace PuttyMadness
             int index = listBox1.IndexFromPoint(e.Location);
             var nt = (KeyValuePair<string, GroupDetail>)listBox1.Items[index];
             ConnectToHost.Instance.Connect_To_Group(nt.Value);
+            Application.Exit();
         }
 
         private void listBox1_KeyDown(object sender, KeyEventArgs e)
@@ -88,6 +88,22 @@ namespace PuttyMadness
             listBox1.Items.RemoveAt(listBox1.SelectedIndex);
             SaveGroups();
             GlobalData.Instance.ToRegistry();
+        }
+
+        private void txtNewGroupName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                button1_Click(sender, e);
+                e.Handled = true;
+            }
+
+        }
+
+        private void GroupListForm_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Escape)
+                this.Close();
         }
 
     }

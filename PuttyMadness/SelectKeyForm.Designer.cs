@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SelectKeyForm));
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
@@ -48,10 +49,15 @@
             this.ClientSize = new System.Drawing.Size(280, 95);
             this.Controls.Add(this.listBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.KeyPreview = true;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "SelectKeyForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Select Pageant Key";
             this.Load += new System.EventHandler(this.SelectKeyForm_Load);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.SelectKeyForm_KeyPress);
             this.ResumeLayout(false);
 
         }

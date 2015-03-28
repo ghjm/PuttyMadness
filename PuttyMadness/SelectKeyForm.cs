@@ -34,5 +34,19 @@ namespace PuttyMadness
                 SelectedKey = listBox1.Items[listBox1.SelectedIndex].ToString();
             DialogResult = DialogResult.OK;
         }
+
+        private void SelectKeyForm_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Escape)
+            {
+                e.Handled = true;
+                this.Close();
+            }
+            else if (e.KeyChar == (char)Keys.Enter)
+            {
+                e.Handled = true;
+                listBox1_DoubleClick(sender, e);
+            }
+        }
     }
 }

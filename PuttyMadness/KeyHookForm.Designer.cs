@@ -92,6 +92,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "KeyHookForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Putty Keyboard Hook Controller";

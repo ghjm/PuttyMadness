@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HostDetailForm));
             this.label1 = new System.Windows.Forms.Label();
             this.textHostname = new System.Windows.Forms.TextBox();
             this.textUsername = new System.Windows.Forms.TextBox();
@@ -213,6 +214,9 @@
             this.Controls.Add(this.textHostname);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "HostDetailForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Host Detail";
@@ -225,8 +229,6 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button btnOK;
-        private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
@@ -236,8 +238,10 @@
         private System.Windows.Forms.TextBox textJumpCmd;
         private System.Windows.Forms.TextBox textJumpHost;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button btnJustConnect;
         private System.Windows.Forms.TextBox textOverrideIP;
         private System.Windows.Forms.Label label6;
+        public System.Windows.Forms.Button btnOK;
+        public System.Windows.Forms.Button btnCancel;
+        public System.Windows.Forms.Button btnJustConnect;
     }
 }

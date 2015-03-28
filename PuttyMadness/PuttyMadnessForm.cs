@@ -42,29 +42,21 @@ namespace PuttyMadness
             }
         }
 
-        private HostDetail Find_Or_Create_Host(string host)
+        private void Create_New_Host(string host)
         {
-            HostDetail hd = null;
-            if (GlobalData.Instance.HostList.ContainsKey(host.ToLower()))
+            var hdf = new HostDetailForm();
+            hdf.InitFromObject(host, null);
+            hdf.AcceptButton = hdf.btnJustConnect;
+            var dlg_result = hdf.ShowDialog();
+            if (dlg_result != System.Windows.Forms.DialogResult.Cancel)
             {
-                hd = GlobalData.Instance.HostList[host];
-            }
-            else
-            {
-                var hdf = new HostDetailForm();
-                hdf.InitFromObject(host, null);
-                var dlg_result = hdf.ShowDialog();
-                if (dlg_result != System.Windows.Forms.DialogResult.Cancel)
+                var hd = hdf.SaveToObject();
+                if (dlg_result == System.Windows.Forms.DialogResult.OK)
                 {
-                    hd = hdf.SaveToObject();
-                    if (dlg_result == System.Windows.Forms.DialogResult.OK)
-                    {
-                        GlobalData.Instance.HostList.Add(hdf.Hostname(), hd);
-                        GlobalData.Instance.ToRegistry();
-                    }
+                    GlobalData.Instance.HostList.Add(hdf.Hostname(), hd);
+                    GlobalData.Instance.ToRegistry();
                 }
             }
-            return hd;
         }
 
         private void textBox1_KeyDown(object sender, KeyEventArgs e)
@@ -99,9 +91,14 @@ namespace PuttyMadness
                 }
                 else
                 {
-                    HostDetail hd = Find_Or_Create_Host(textBox1.Text);
-                    if (hd != null)
-                        ConnectToHost.Instance.Connect_To_Host(textBox1.Text, hd);
+                    if (GlobalData.Instance.HostList.ContainsKey(textBox1.Text.ToLower()))
+                    {
+                        ConnectToHost.Instance.Connect_To_Host(textBox1.Text, GlobalData.Instance.HostList[textBox1.Text.ToLower()]);
+                    }
+                    else
+                    {
+                        Create_New_Host(textBox1.Text);
+                    }
                 }
             }
             else if ((e.KeyCode == Keys.E) && (e.Alt))
@@ -170,7 +167,6 @@ namespace PuttyMadness
             CenterFormOnMe(gwf);
             gwf.LoadGroups();
             gwf.Show();
-            this.Hide();
         }
 
         private void label3_Click(object sender, EventArgs e)
