@@ -126,9 +126,10 @@ namespace PuttyMadness
             {
                 // Figure out if the requested window would be off the screen
                 bool position_ok = false;
+                const int offscreen_margin = 20;
                 foreach (var screen in Screen.AllScreens)
                 {
-                    if (screen.WorkingArea.Contains(new Rectangle(Left, Top, Width, Height)))
+                    if (screen.WorkingArea.Contains(new Rectangle(Left + offscreen_margin, Top + offscreen_margin, Width - (2 * offscreen_margin), Height - (2 * offscreen_margin))))
                         position_ok = true;
                 }
                 
