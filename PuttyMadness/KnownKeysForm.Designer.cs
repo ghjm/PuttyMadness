@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(KnownKeysForm));
             this.btnOK = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
@@ -46,6 +47,10 @@
             this.txtAddKey = new System.Windows.Forms.TextBox();
             this.btnAddKey = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnOK
@@ -79,6 +84,7 @@
             // 
             // lstKeys
             // 
+            this.lstKeys.ContextMenuStrip = this.contextMenuStrip1;
             this.lstKeys.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.lstKeys.FormattingEnabled = true;
             this.lstKeys.Location = new System.Drawing.Point(15, 25);
@@ -88,6 +94,7 @@
             this.lstKeys.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.lstKeys_DrawItem);
             this.lstKeys.SelectedIndexChanged += new System.EventHandler(this.lstKeys_SelectedIndexChanged);
             this.lstKeys.KeyDown += new System.Windows.Forms.KeyEventHandler(this.lstKeys_KeyDown);
+            this.lstKeys.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lstKeys_MouseDown);
             // 
             // label1
             // 
@@ -212,11 +219,36 @@
             // label5
             // 
             this.label5.AutoSize = true;
+            this.label5.ForeColor = System.Drawing.SystemColors.GrayText;
             this.label5.Location = new System.Drawing.Point(13, 267);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(190, 13);
+            this.label5.Size = new System.Drawing.Size(222, 13);
             this.label5.TabIndex = 15;
-            this.label5.Text = "(Name must match Pageant key name)";
+            this.label5.Text = "(Name must match Pageant \"comment\" field.)";
+            // 
+            // label6
+            // 
+            this.label6.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.label6.Location = new System.Drawing.Point(238, 200);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(213, 59);
+            this.label6.TabIndex = 16;
+            this.label6.Text = "(Key load command is typically a script that runs something like \"sudo ssh-add\" t" +
+    "o add a key to Pageant from a remote host.)";
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.deleteToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(108, 26);
+            // 
+            // deleteToolStripMenuItem
+            // 
+            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.deleteToolStripMenuItem.Text = "Delete";
+            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
             // 
             // KnownKeysForm
             // 
@@ -224,6 +256,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
             this.ClientSize = new System.Drawing.Size(463, 296);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.btnAddKey);
             this.Controls.Add(this.txtAddKey);
@@ -247,6 +280,7 @@
             this.Name = "KnownKeysForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Known Keys";
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -271,5 +305,8 @@
         private System.Windows.Forms.TextBox txtAddKey;
         private System.Windows.Forms.Button btnAddKey;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
     }
 }

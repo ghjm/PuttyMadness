@@ -143,23 +143,36 @@ namespace PuttyMadness
 
         private void lstKeys_DrawItem(object sender, DrawItemEventArgs e)
         {
-            var nt = (KeyValuePair<string, KeyDetail>)lstKeys.Items[e.Index];
-            e.DrawBackground();
-            e.Graphics.DrawString(nt.Key, Control.DefaultFont, Brushes.Black, e.Bounds);
-            e.DrawFocusRectangle();
+            if ((e.Index >= 0) && (e.Index < lstKeys.Items.Count))
+            {
+                var nt = (KeyValuePair<string, KeyDetail>)lstKeys.Items[e.Index];
+                e.DrawBackground();
+                e.Graphics.DrawString(nt.Key, Control.DefaultFont, Brushes.Black, e.Bounds);
+                e.DrawFocusRectangle();
+            }
         }
 
         private void lstKeys_KeyDown(object sender, KeyEventArgs e)
         {
-            if ((lstKeys.SelectedIndex >= 0) && (lstKeys.SelectedIndex < lstKeys.Items.Count) &&
-                (e.KeyCode == Keys.Delete))
-                lstKeys.Items.RemoveAt(lstKeys.SelectedIndex);
+            if (e.KeyCode == Keys.Delete)
+                deleteToolStripMenuItem_Click(sender, e);
         }
 
         private void btnPPKOpen_Click(object sender, EventArgs e)
         {
             if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 txtPPK.Text = openFileDialog1.FileName;
+        }
+
+        private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if ((lstKeys.SelectedIndex >= 0) && (lstKeys.SelectedIndex < lstKeys.Items.Count))
+                lstKeys.Items.RemoveAt(lstKeys.SelectedIndex);
+        }
+
+        private void lstKeys_MouseDown(object sender, MouseEventArgs e)
+        {
+            lstKeys.SelectedIndex = lstKeys.IndexFromPoint(e.X, e.Y);
         }
 
     }

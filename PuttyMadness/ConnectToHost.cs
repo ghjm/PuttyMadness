@@ -89,14 +89,15 @@ namespace PuttyMadness
                 }
             }
 
+            // Figure out who and what the final connection should be to
             string realhost = (hd.OverrideIP.Length > 0) ? hd.OverrideIP : Regex.Replace(host, @"\s+\(.*\)\s*$", "");
+            string realuser = (hd.Username.Length > 0) ? hd.Username : "root";
 
             // Figure out the path to actually connect to
-            string connhost = ((hd.Username.Length > 0) ? hd.Username + "@" : "") +
-                ((hd.JumpHost.Length > 0) ? hd.JumpHost : realhost);
+            string connhost = realuser + "@" + ((hd.JumpHost.Length > 0) ? hd.JumpHost : realhost);
 
             // Figure out the jump command, if any
-            string jumpcmd = (hd.JumpCmd.Length > 0) ? hd.JumpCmd : ((hd.JumpHost.Length > 0) ? "ssh -A root@$host" : "");
+            string jumpcmd = (hd.JumpCmd.Length > 0) ? hd.JumpCmd : ((hd.JumpHost.Length > 0) ? "ssh -A $user@$host" : "");
 
             // If there is a jump command, we'll need to create a temp file
             string TempFN = "";
@@ -105,7 +106,7 @@ namespace PuttyMadness
                 TempFN = Path.GetTempFileName();
                 using (var sw = new StreamWriter(TempFN))
                 {
-                    sw.WriteLine(jumpcmd.Replace("$host", realhost));
+                    sw.WriteLine(jumpcmd.Replace("$host", realhost).Replace("$user", realuser));
                 }
             }
 
