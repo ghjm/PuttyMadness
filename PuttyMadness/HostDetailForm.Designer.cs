@@ -51,6 +51,9 @@
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.textNote = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -90,20 +93,20 @@
             // btnOK
             // 
             this.btnOK.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnOK.Location = new System.Drawing.Point(133, 271);
+            this.btnOK.Location = new System.Drawing.Point(133, 318);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(75, 23);
-            this.btnOK.TabIndex = 19;
+            this.btnOK.TabIndex = 22;
             this.btnOK.Text = "OK";
             this.btnOK.UseVisualStyleBackColor = true;
             // 
             // btnCancel
             // 
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(214, 271);
+            this.btnCancel.Location = new System.Drawing.Point(214, 318);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel.TabIndex = 20;
+            this.btnCancel.TabIndex = 23;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             // 
@@ -171,10 +174,10 @@
             // btnJustConnect
             // 
             this.btnJustConnect.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnJustConnect.Location = new System.Drawing.Point(295, 271);
+            this.btnJustConnect.Location = new System.Drawing.Point(295, 318);
             this.btnJustConnect.Name = "btnJustConnect";
             this.btnJustConnect.Size = new System.Drawing.Size(104, 23);
-            this.btnJustConnect.TabIndex = 21;
+            this.btnJustConnect.TabIndex = 24;
             this.btnJustConnect.Text = "Just &Connect";
             this.btnJustConnect.UseVisualStyleBackColor = true;
             this.btnJustConnect.Click += new System.EventHandler(this.btnJustConnect_Click);
@@ -256,13 +259,43 @@
             this.label12.TabIndex = 18;
             this.label12.Text = "Command to run on the jump host. Default: ssh -A $user@$host";
             // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.label13.Location = new System.Drawing.Point(88, 285);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(220, 13);
+            this.label13.TabIndex = 21;
+            this.label13.Text = "Note to pop up when connecting to this host.";
+            // 
+            // textNote
+            // 
+            this.textNote.Location = new System.Drawing.Point(89, 264);
+            this.textNote.Name = "textNote";
+            this.textNote.Size = new System.Drawing.Size(310, 20);
+            this.textNote.TabIndex = 20;
+            this.textNote.TextChanged += new System.EventHandler(this.textChanged);
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(9, 267);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(33, 13);
+            this.label14.TabIndex = 19;
+            this.label14.Text = "Note:";
+            // 
             // HostDetailForm
             // 
             this.AcceptButton = this.btnOK;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(411, 304);
+            this.ClientSize = new System.Drawing.Size(411, 354);
+            this.Controls.Add(this.label13);
+            this.Controls.Add(this.textNote);
+            this.Controls.Add(this.label14);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label10);
@@ -321,5 +354,8 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TextBox textNote;
+        private System.Windows.Forms.Label label14;
     }
 }

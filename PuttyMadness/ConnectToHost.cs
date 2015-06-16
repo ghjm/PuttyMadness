@@ -149,25 +149,50 @@ namespace PuttyMadness
             WindowPersist.Instance.AddWindowHostName(putty_hWnd, host);
             WindowPersist.Instance.SaveAndUnlock();
 
-            if (Wait)
+            // This is what we will do either right now, or when the
+            // note form finishes fading.
+            Action close_action = () =>
             {
-                proc.WaitForExit();
-                File.Delete(TempFN);
-            }
-            else
-            {
-                // If we made a temp file, clean it up
-                if (TempFN.Length > 0)
+                if (Wait)
                 {
-                    DeleteQueue.Add(TempFN);
-                    timer1.Interval = 5000;
-                    timer1.Enabled = true;
+                    proc.WaitForExit();
+                    File.Delete(TempFN);
                 }
                 else
                 {
-                    Application.Exit();
+                    // If we made a temp file, clean it up
+                    if (TempFN.Length > 0)
+                    {
+                        DeleteQueue.Add(TempFN);
+                        timer1.Interval = 5000;
+                        timer1.Enabled = true;
+                    }
+                    else
+                    {
+                        Application.Exit();
+                    }
                 }
+            };
+
+            // Show the note, if there is one
+            if (hd.Note != "")
+            {
+                var snf = new ShowNoteForm();
+                snf.FormClosed += (sender, e) =>
+                {
+                    close_action();
+                };
+                var rect = new Win32.RECT();
+                Win32.GetWindowRect(putty_hWnd, ref rect);
+                snf.ShowMessage(hd.Note, rect);
+                Win32.SetForegroundWindow(putty_hWnd);
+                snf.FadeAndClose();
             }
+            else
+            {
+                close_action();
+            }
+
         }
         private void timer1_Tick(object sender, EventArgs e)
         {

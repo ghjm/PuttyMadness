@@ -134,6 +134,12 @@
     <Compile Include="KnownKeysForm.Designer.cs">
       <DependentUpon>KnownKeysForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ShowNoteForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShowNoteForm.Designer.cs">
+      <DependentUpon>ShowNoteForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Win32.cs" />
     <Compile Include="PuttyWindows.cs" />
     <Compile Include="WindowPersist.cs" />
@@ -179,6 +185,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="KnownKeysForm.resx">
       <DependentUpon>KnownKeysForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ShowNoteForm.resx">
+      <DependentUpon>ShowNoteForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
