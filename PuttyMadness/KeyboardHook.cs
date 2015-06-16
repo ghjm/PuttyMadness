@@ -50,6 +50,7 @@ namespace PuttyMadness
             if (nCode >= 0 && (wParam == (IntPtr)WM_KEYDOWN || wParam == (IntPtr)WM_KEYUP))
             {
                 int vkCode = Marshal.ReadInt32(lParam);
+                Debug.WriteLine("Key {0}", vkCode);
 
                 if ((Win32.GetAsyncKeyState(Keys.ShiftKey) & 0x8000) != 0)
                 {
@@ -77,7 +78,9 @@ namespace PuttyMadness
                         OnKeyUp(null, kea);
                 }
                 if (kea.Handled && ((vkCode < 160) || (vkCode > 164)))
+                {
                     return (IntPtr)1;
+                }
             }
             return CallNextHookEx(_hookID, nCode, wParam, lParam);
         }

@@ -86,7 +86,12 @@ namespace PuttyMadness
                     }
                 }
                 if (keydown)
-                    Win32.PostMessage(pw.hWnd, Win32.WM_KEYDOWN, (IntPtr)ke.KeyValue, (IntPtr)0);
+                {
+                    int lParam = 0;
+                    if ((ke.KeyValue >= 0x21) && (ke.KeyValue <= 0x28))
+                        lParam = 0x1000000;
+                    Win32.SendMessage(pw.hWnd, Win32.WM_KEYDOWN, (IntPtr)ke.KeyValue, (IntPtr)lParam);
+                }
             }
 
         }
