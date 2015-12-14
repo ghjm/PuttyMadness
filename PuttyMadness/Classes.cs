@@ -21,6 +21,7 @@ namespace PuttyMadness
         public string JumpHost = "";
         public string JumpCmd = "";
         public string OverrideIP = "";
+        public string OverridePort = "";
         public string Note = "";
         public void ToRegistry(RegistryKey rhk)
         {
@@ -41,6 +42,10 @@ namespace PuttyMadness
                 rhk.SetValue("OverrideIP", OverrideIP);
             else
                 rhk.DeleteValue("OverrideIP", false);
+            if (OverridePort.Length > 0)
+                rhk.SetValue("OverridePort", OverridePort);
+            else
+                rhk.DeleteValue("OverridePort", false);
             if (Note.Length > 0)
                 rhk.SetValue("Note", Note);
             else
@@ -53,6 +58,7 @@ namespace PuttyMadness
             JumpHost = rhk.GetValue("JumpHost", "").ToString();
             JumpCmd = rhk.GetValue("JumpCmd", "").ToString();
             OverrideIP = rhk.GetValue("OverrideIP", "").ToString();
+            OverridePort = rhk.GetValue("OverridePort", "").ToString();
             Note = rhk.GetValue("Note", "").ToString();
         }
     }

@@ -93,8 +93,9 @@ namespace PuttyMadness
             string realhost = (hd.OverrideIP.Length > 0) ? hd.OverrideIP : Regex.Replace(host, @"\s+\(.*\)\s*$", "");
             string realuser = (hd.Username.Length > 0) ? hd.Username : "root";
 
-            // Figure out the path to actually connect to
+            // Figure out the initial host to connect to
             string connhost = realuser + "@" + ((hd.JumpHost.Length > 0) ? hd.JumpHost : realhost);
+            string connport = (hd.OverridePort.Length > 0) ? "-P " + hd.OverridePort + " " : "";
 
             // Figure out the jump command, if any
             string jumpcmd = (hd.JumpCmd.Length > 0) ? hd.JumpCmd : ((hd.JumpHost.Length > 0) ? "ssh -A $user@$host" : "");
@@ -111,7 +112,7 @@ namespace PuttyMadness
             }
 
             // Figure out the full command line for Putty
-            string puttycmd = ((TempFN.Length > 0) ? @"-t -m """ + TempFN + @""" " : "") + connhost;
+            string puttycmd = ((TempFN.Length > 0) ? @"-t -m """ + TempFN + @""" " : "") + connport + connhost;
 
             // Locate PuTTY itself
             string putty_path = PuttySearch.GetFullPath("putty.exe");

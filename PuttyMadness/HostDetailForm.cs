@@ -36,6 +36,7 @@ namespace PuttyMadness
                     textJumpHost.Text = Hostinfo.JumpHost;
                     textJumpCmd.Text = Hostinfo.JumpCmd;
                     textOverrideIP.Text = Hostinfo.OverrideIP;
+                    textOverridePort.Text = Hostinfo.OverridePort;
                     textNote.Text = Hostinfo.Note;
                 }
             }
@@ -53,6 +54,7 @@ namespace PuttyMadness
             Hostinfo.JumpHost = textJumpHost.Text;
             Hostinfo.JumpCmd = textJumpCmd.Text;
             Hostinfo.OverrideIP = textOverrideIP.Text;
+            Hostinfo.OverridePort = textOverridePort.Text;
             Hostinfo.Note = textNote.Text;
             return Hostinfo;
         }
