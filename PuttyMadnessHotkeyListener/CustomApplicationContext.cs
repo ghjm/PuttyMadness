@@ -35,6 +35,7 @@ namespace PuttyMadness
 
             notifyIcon.DoubleClick += notifyIcon_DoubleClick;
 
+            notifyIcon.ContextMenuStrip.Items.Add(new ToolStripMenuItem("&Connect...", null, connectMenu_Click));
             notifyIcon.ContextMenuStrip.Items.Add(new ToolStripMenuItem("&Settings...", null, notifyIcon_DoubleClick));
             notifyIcon.ContextMenuStrip.Items.Add(new ToolStripSeparator());
             notifyIcon.ContextMenuStrip.Items.Add(new ToolStripMenuItem("E&xit", null, exitItem_Click));
@@ -148,6 +149,11 @@ namespace PuttyMadness
                 LaunchPuttyMadness();
                 ke.Handled = true;
             }
+        }
+
+        private void connectMenu_Click(object sender, EventArgs e)
+        {
+            LaunchPuttyMadness();
         }
 
         private void notifyIcon_DoubleClick(object sender, EventArgs e)
