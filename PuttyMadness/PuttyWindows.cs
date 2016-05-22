@@ -37,7 +37,7 @@ namespace PuttyMadness
                 if (text.Length > 0)
                 {
                     string pfn = Win32.ProcessModuleIfAvail(proc);
-                    if (pfn.EndsWith("putty.exe"))
+                    if (pfn.EndsWith("putty.exe") || proc.ProcessName == "putty")
                     {
                         var pw = new PuttyWindow();
                         pw.hWnd = hWnd;
