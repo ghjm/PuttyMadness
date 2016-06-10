@@ -1,7 +1,7 @@
-version: 0.90.{build}
+version: 0.95.{build}
 environment:
   access_token:
-    secure: ahkbWh0TYE4ffBk/J6nfixGuO3Uc7iqQ14VN3LlC0ur5DiaNEGnDN+oNd4JNCcEd
+    secure: CYu05wxSe71i6I4FzuD/qGPtN9It0sSIAtmBChBBWdnXW7XH+NwevsGKIXKoyHTg
 branches:
   only:
   - master
