@@ -1,5 +1,5 @@
 ﻿$apiUrl = 'https://ci.appveyor.com/api'
-$accountName = 'ghjm'
+$accountName = 'ghjm-machine'
 $projectSlug = 'puttymadness'
 
 $project = Invoke-RestMethod -Method Get -Uri "$apiUrl/projects/$accountName/$projectSlug"
