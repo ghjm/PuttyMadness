@@ -21,7 +21,7 @@ for (;;) {
             $skipping = $FALSE
         }
     } else {
-        if ($line -match "Version (.+) Downloads:") {
+        if ($line -match "Version (.*) Downloads:") {
             $skipping = $TRUE
             $new_content += "Version $version Downloads:"
             foreach ($a in $artifacts) {
