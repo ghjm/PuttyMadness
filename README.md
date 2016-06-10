@@ -11,7 +11,9 @@ install, download the zip file. You must have .NET 4.0 or higher installed.
 
 [![Build status](https://ci.appveyor.com/api/projects/status/p37ty9a26fjl5q8w)](https://ci.appveyor.com/project/ghjm-machine/puttymadness)
 
-Version  Downloads:
+Version 0.95.5 Downloads:
+* [PuttyMadness.zip](https://ci.appveyor.com/api/buildjobs/bkx23fn69021lrec/artifacts/PuttyMadness.zip)
+* [PuttyMadness.msi](https://ci.appveyor.com/api/buildjobs/bkx23fn69021lrec/artifacts/Setup/bin/Release/PuttyMadness.msi)
 
 Many thanks to AppVeyor for their awesome free build service.
 
