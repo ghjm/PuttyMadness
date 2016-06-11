@@ -1,4 +1,4 @@
-version: 0.95.{build}
+version: 0.96.{build}
 environment:
   access_token:
     secure: CYu05wxSe71i6I4FzuD/qGPtN9It0sSIAtmBChBBWdnXW7XH+NwevsGKIXKoyHTg
@@ -23,8 +23,8 @@ artifacts:
   - path: Setup\bin\Release\PuttyMadness.msi
     name: PuttyMadness.msi
 on_success:
-  - git config --global user.email "graham2@mhn.org"
-  - git config --global user.name "Graham's Machine Account"
+  - git config --global user.email "graham@mhn.org"
+  - git config --global user.name "Graham Mainwaring"
   - git config --global credential.helper store
   - git config --global push.default simple
   - ps: Add-Content "$env:USERPROFILE\.git-credentials" "https://$($env:access_token):x-oauth-basic@github.com`n"

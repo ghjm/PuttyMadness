@@ -9,7 +9,7 @@ It also includes a keyboard hook function that lets you send commands to many Pu
 The easiest way to install is to download and run the MSI (Windows Installer) file below. Or if you prefer a portable
 install, download the zip file. You must have .NET 4.0 or higher installed.
 
-[![Build status](https://ci.appveyor.com/api/projects/status/p37ty9a26fjl5q8w)](https://ci.appveyor.com/project/ghjm-machine/puttymadness)
+[![Build status](https://ci.appveyor.com/api/projects/status/2n609in3u5jwv829)](https://ci.appveyor.com/project/ghjm/puttymadness)
 
 Version 0.95.5 Downloads:
 * [PuttyMadness.zip](https://ci.appveyor.com/api/buildjobs/bkx23fn69021lrec/artifacts/PuttyMadness.zip)
