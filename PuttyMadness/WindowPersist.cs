@@ -105,7 +105,7 @@ namespace PuttyMadness
                     {
                         Process proc = Process.GetProcessById((int)Win32.GetWindowProcessId(hWnd));
                         string pfn = Win32.ProcessModuleIfAvail(proc);
-                        if (pfn.EndsWith("putty.exe"))
+                        if ((proc.ProcessName == "putty") || pfn.EndsWith("putty.exe"))
                         {
                             HostList.Add(hWnd, list[1]);
                         }
