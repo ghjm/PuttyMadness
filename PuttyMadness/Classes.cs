@@ -14,7 +14,7 @@ namespace PuttyMadness
         void FromRegistry(RegistryKey rhk);
     }
 
-    public class HostDetail: IDetail
+    public class HostDetail: IDetail, ICloneable
     {
         public string Username = "";
         public string RequiredKey = "";
@@ -60,6 +60,10 @@ namespace PuttyMadness
             OverrideIP = rhk.GetValue("OverrideIP", "").ToString();
             OverridePort = rhk.GetValue("OverridePort", "").ToString();
             Note = rhk.GetValue("Note", "").ToString();
+        }
+        public object Clone()
+        {
+            return this.MemberwiseClone();
         }
     }
     public class KeyDetail: IDetail

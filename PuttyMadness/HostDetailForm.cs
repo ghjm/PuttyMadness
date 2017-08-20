@@ -19,7 +19,7 @@ namespace PuttyMadness
 
         public bool Initializing = false;
 
-        public void InitFromObject(string Hostname, HostDetail Hostinfo)
+        public void InitFromObject(string Hostname, HostDetail Hostinfo, string Username=null)
         {
             Initializing = true;
             try
@@ -27,7 +27,15 @@ namespace PuttyMadness
                 textHostname.Text = Hostname;
                 if (Hostinfo == null)
                 {
-                    ActiveControl = textUsername;
+                    if (Username == null)
+                    {
+                        ActiveControl = textUsername;
+                    }
+                    else
+                    {
+                        textUsername.Text = Username;
+                        ActiveControl = btnJustConnect;
+                    }
                 }
                 else
                 {

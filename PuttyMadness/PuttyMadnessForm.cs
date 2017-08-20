@@ -42,10 +42,10 @@ namespace PuttyMadness
             }
         }
 
-        private void Create_New_Host(string host)
+        private void Create_New_Host(string host, string username)
         {
             var hdf = new HostDetailForm();
-            hdf.InitFromObject(host, null);
+            hdf.InitFromObject(host, null, username);
             hdf.AcceptButton = hdf.btnJustConnect;
             var dlg_result = hdf.ShowDialog();
             if (dlg_result != System.Windows.Forms.DialogResult.Cancel)
@@ -91,13 +91,30 @@ namespace PuttyMadness
                 }
                 else
                 {
-                    if (GlobalData.Instance.HostList.ContainsKey(textBox1.Text.ToLower()))
+                    var split_host = textBox1.Text.Split('@');
+                    if (split_host.Length > 2)
                     {
-                        ConnectToHost.Instance.Connect_To_Host(textBox1.Text, GlobalData.Instance.HostList[textBox1.Text.ToLower()]);
+                        MessageBox.Show("Cannot parse host string");
+                        return;
+                    }
+                    string lc_host = split_host[split_host.Length-1].ToLower();
+                    string username = null;
+                    if (split_host.Length == 2)
+                    {
+                        username = split_host[0];
+                    }
+                    if (GlobalData.Instance.HostList.ContainsKey(lc_host))
+                    {
+                        var hostdata = GlobalData.Instance.HostList[lc_host].Clone() as HostDetail;
+                        if (username != null)
+                        {
+                            hostdata.Username = username;
+                        }
+                        ConnectToHost.Instance.Connect_To_Host(lc_host, hostdata);
                     }
                     else
                     {
-                        Create_New_Host(textBox1.Text);
+                        Create_New_Host(lc_host, username);
                     }
                 }
             }
