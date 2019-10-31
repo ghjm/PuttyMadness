@@ -1,7 +1,4 @@
 version: 0.96.{build}
-environment:
-  access_token:
-    secure: vrbTPX5jG1Wok7BikN/QEDwfE36gnrOyXUCWBUaXE7gnQ1DeIn0ZFSB/5m3YXyVW
 branches:
   only:
   - master
