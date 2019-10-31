@@ -1,4 +1,7 @@
 version: 0.96.{build}
+environment:
+  access_token:
+    secure: BStBevx5tekeR6MHKwrJKiDZRhwSQ5dr3e6erMLq40SuGN1DB8HZfs4yT0D9M6vx
 branches:
   only:
   - master
