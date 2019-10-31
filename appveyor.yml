@@ -12,6 +12,8 @@ assembly_info:
   assembly_informational_version: '{version}'
 build:
   verbosity: normal
+before_build:
+  - ps: nuget restore
 after_build:
   - 7z a %APPVEYOR_BUILD_FOLDER%\PuttyMadness.zip %APPVEYOR_BUILD_FOLDER%\Renci.SshNet\bin\Release\Renci.SshNet.dll %APPVEYOR_BUILD_FOLDER%\PuttyMadness\bin\Release\PuttyMadness.exe %APPVEYOR_BUILD_FOLDER%\PuttyMadnessHotkeyListener\bin\Release\PuttyMadnessHotkeyListener.exe
 artifacts:
