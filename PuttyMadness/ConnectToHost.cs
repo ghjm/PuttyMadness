@@ -91,10 +91,10 @@ namespace PuttyMadness
 
             // Figure out who and what the final connection should be to
             string realhost = (hd.OverrideIP.Length > 0) ? hd.OverrideIP : Regex.Replace(host, @"\s+\(.*\)\s*$", "");
-            string realuser = (hd.Username.Length > 0) ? hd.Username : "root";
+            string realuser = (hd.Username.Length > 0) ? hd.Username + "@" : "";
 
             // Figure out the initial host to connect to
-            string connhost = realuser + "@" + ((hd.JumpHost.Length > 0) ? hd.JumpHost : realhost);
+            string connhost = realuser + ((hd.JumpHost.Length > 0) ? hd.JumpHost : realhost);
             string connport = (hd.OverridePort.Length > 0) ? "-P " + hd.OverridePort + " " : "";
 
             // Figure out the jump command, if any
