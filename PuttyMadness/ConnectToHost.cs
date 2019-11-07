@@ -78,7 +78,7 @@ namespace PuttyMadness
                             string pageant_path = PuttySearch.GetFullPath("pageant.exe");
                             if (pageant_path == null)
                                 return;
-                            var pag_proc = System.Diagnostics.Process.Start(pageant_path, key.PPKFile);
+                            var pag_proc = System.Diagnostics.Process.Start(pageant_path, '"' + key.PPKFile + '"');
                             pag_proc.WaitForExit();
                         }
                     }
